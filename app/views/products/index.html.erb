@@ -1,11 +1,33 @@
-<h1>Products</h1>
+<h1><%= t ".title" %></h1>
 
-<%= link_to "New product", new_product_path %>
+<%= link_to 'Add New Product', new_product_path, class: 'btn btn-primary' %>
 
-<div id="products">
-  <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product %>
-    </div>
-  <% end %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Inventory</th>
+      <th>IMG</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.description %></td>
+        <td><%= product.inventory_count %></td>
+        <td>
+            <%= link_to product_path(product) do %>
+              <%= image_tag(product.featured_image, class: "product-image") if product.featured_image.present? %>
+            <% end %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
