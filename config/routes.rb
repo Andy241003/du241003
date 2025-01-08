@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   root "products#index"
 
+  get "signup", to: "registrations#new1"
+  post "signup", to: "registrations#create"
+
   resources :products do
     resources :subscribers, only: [ :create ]
   end
