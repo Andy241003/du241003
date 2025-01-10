@@ -27,7 +27,7 @@
     <nav>
       <%= link_to "Home", root_path, class: 'btn btn-primary btn-home' %>
       <%= link_to "Sign up", signup_path, class: 'btn btn-primary btn-signup' %>
-      <%= button_to "Log out", session_path, method: :delete, class: 'btn btn-primary btn-logout' if authenticated? %>    
+      <%= button_to 'Log out', session_path, method: :delete, form_class: 'custom-form-class', class: 'btn btn-primary btn-logout' %>
     </nav>
 
     <main>

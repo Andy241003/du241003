@@ -1,33 +1,29 @@
-<h1><%= t ".title" %></h1>
+<h1 class="text-center"><%= t ".title" %></h1>
 
 <%= link_to 'Add New Product', new_product_path, class: 'btn btn-primary' %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Inventory</th>
-      <th>IMG</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= link_to product.name, product_path(product) %></td>
-        <td><%= product.description %></td>
-        <td><%= product.inventory_count %></td>
-        <td>
-            <%= link_to product_path(product) do %>
-              <%= image_tag(product.featured_image, class: "product-image") if product.featured_image.present? %>
-            <% end %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="product-list">
+  <% @products.each do |product| %>
+    <div class="product-item">
+      <div class="product-image">
+        <%= link_to product_path(product) do %>
+          <%= image_tag(product.featured_image, alt: product.name) if product.featured_image.present? %>
+        <% end %>
+      </div>
+      <div class="product-info">
+        <h2 class="product-name">
+          <%= link_to product.name, product_path(product) %>
+        </h2>
+        <p class="product-description"><%= product.description %></p>
+        <p class="product-inventory">Inventory: <%= product.inventory_count %></p>
+      </div>
+      <div class="product-actions">
+        <%= link_to 'Edit', edit_product_path(product), class: 'btn btn-warning' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
 
