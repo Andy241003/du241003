@@ -25,9 +25,9 @@
   <body>
     <div class="notice"><%= notice %></div>
     <nav>
-      <%= link_to "Home", root_path %>
-      <%= link_to "Sign up", signup_path %>
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+      <%= link_to "Home", root_path, class: 'btn btn-primary btn-home' %>
+      <%= link_to "Sign up", signup_path, class: 'btn btn-primary btn-signup' %>
+      <%= button_to "Log out", session_path, method: :delete, class: 'btn btn-primary btn-logout' if authenticated? %>    
     </nav>
 
     <main>

@@ -1,5 +1,7 @@
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<h1 class="signup-header">Sign In</h1>
+
+<%= tag.div(flash[:alert], class: "flash-message alert") if flash[:alert] %>
+<%= tag.div(flash[:notice], class: "flash-message notice") if flash[:notice] %>
 
 <%= form_with url: session_path do |form| %>
   <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
@@ -8,4 +10,4 @@
 <% end %>
 <br>
 
-<%= link_to "Forgot password?", new_password_path %>
+<%= link_to "Forgot password?", new_password_path, class: "back-link" %>
